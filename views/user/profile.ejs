@@ -1,0 +1,12 @@
+<h1>My Profile</h1>
+
+Username: <%= userInfo.user.username %><br />
+Name: <%= userInfo.user.firstName %> <%= userInfo.user.lastName %><br />
+Email: <%= userInfo.user.email %><br />
+
+<% if(reqInfo.roles?.length) { %> Roles: <%= reqInfo.roles %> <% } %>
+
+<% console.log("userInfo:", userInfo); %>
+<% console.log("userInfo:", reqInfo); %>
+
+<a href="/user/edit/<%= userInfo.user._id %>"><button class="btn btn-Edit">Edit</button></a>

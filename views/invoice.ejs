@@ -55,7 +55,7 @@
                 </article>
                 <article>
                     <p class="title-style-2">PLEASE PAY</p>
-                    <p><%= totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
+                    <p><%= (totalAmount/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
                   </article>              
                 <article>
                     <p class="title-style-2">DUE DATE</p>
@@ -75,8 +75,8 @@
             <tr>
                 <td><%= product.name %></td> 
                 <td class="text-style-2"><%= invoice.quantities[index] %></td>
-                <td class="text-style-2"><%= product.unitCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
-                <td class="text-style-3"><%= (invoice.quantities[index] * product.unitCost).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                <td class="text-style-2"><%= (product.unitCost/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                <td class="text-style-3"><%= (invoice.quantities[index] * product.unitCost/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
             </tr>
         <% }) %>
     </table>
@@ -88,7 +88,7 @@
         </section>
         <section class="total-section">
             <p class="title-style-3">TOTAL DUE</p>
-            <p id="total-due" class="text-style-3"><%= totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
+            <p id="total-due" class="text-style-3"><%= (totalAmount/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
         </section>
     </section>
     </main>

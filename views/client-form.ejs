@@ -12,7 +12,8 @@
     <input class="inputfield" id="companyName" name="companyName" type="text" value="<%= myClient.companyName ? myClient.companyName : '' %>">
     
     <label for="email">Email:</label>
-    <input class="inputfield" id="email" name="email" type="email" value="<%= myClient.email ? myClient.email : '' %>">   
+    <input class="inputfield" id="email" name="email" type="email" value="<%= myClient.email ? myClient.email : '' %>">  
+    <button type="submit" value="Submit" class="btn btn-Submit">Submit</button>
+ 
 </form>
-<button type="submit" value="Submit" class="btn btn-Submit">Submit</button>
 <%= errorMessage %>
