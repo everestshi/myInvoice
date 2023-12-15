@@ -2,16 +2,6 @@
   <table>
     <tbody>
       <tr>
-        <td>User Name:</td>
-        <td>
-          <input
-            name="username"
-            type="text"
-            value="<%= user.username ? user.username : '' %>"
-          />
-        </td>
-      </tr>
-      <tr>
         <td>Email:</td>
         <td>
           <input
@@ -41,19 +31,25 @@
           />
         </td>
       </tr>
+      <% if (reqInfo.roles.includes("Admin")) { %>
+        <tr>
+          <td>User Roles:</td>
+          <td>
+            <select name="userRoles">
+              <option value="" <% if (!user.roles || user.roles.length === 0) { %>selected<% } %>>Empty</option>
+              <option value="Manager" <% if (user.roles.includes("Manager")) { %>selected<% } %>>Manager</option>
+              <option value="Admin" <% if (user.roles.includes("Admin")) { %>selected<% } %>>Admin</option>
+            </select>
+          </td>
+        </tr>
+      <% } %>
+      <% if (returnUrl) { %>
+        <!-- Hidden input field to store the returnUrl -->
+        <input type="hidden" name="returnUrl" value="<%= returnUrl %>">
+      <% } %>
       <tr>
-        <td>Current Password:</td>
-        <td><input name="currentPassword" type="password" /></td>
-      </tr>
-
-      <tr>
-        <td>New Password:</td>
-        <td><input name="newPassword" type="password" /></td>
-      </tr>
-
-      <tr>
-        <td>Password Confirmation:</td>
-        <td><input name="passwordConfirm" type="password" /></td>
+        <td></td>
+        <td><input type="submit" value="Submit" /></td>
       </tr>
     </tbody>
   </table>

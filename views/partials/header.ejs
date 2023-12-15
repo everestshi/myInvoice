@@ -1,8 +1,19 @@
 <header>
-  <nav class="nav-bar">
-    <a href="/">Home</a> 
-    <a href="/clients">Clients</a> 
-    <a href="/products">Products</a> 
-    <a href="/invoices">Invoices</a>
-  </nav>
+  <a href="/">Home</a> |
+  <!-- Show 'Logout' and user name if authenticated. -->
+  <% if (reqInfo.authenticated) { %>
+      <a href="/user/profile">My Profile</a> |
+      <a href="/products">Products</a> |
+      <a href="/invoices">Invoices</a> |
+      <% if (reqInfo.roles.includes("Admin")) { %>
+          <a href="/clients">Clients</a> |
+      <% } %>
+      <% if (reqInfo.roles.includes("Admin") || reqInfo.roles.includes("Manager")) { %>
+        <a href="/user/users">Users</a> |
+    <% } %>
+      <a href="/user/logout">Logout</a>
+  <% } else { %>
+      <a href="/user/register">Register</a> |
+      <a href="/user/login">Login</a>
+  <% } %>
 </header>

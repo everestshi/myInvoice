@@ -6,6 +6,12 @@ class UserData {
     return user;
   }
 
+  async getAllUsers(filter = {}) { // Provide a default value of an empty object for the filter
+    console.log("Getting all users with filter:", filter);
+    let users = await User.find(filter).collation({ locale: 'en' }).sort({ name: 1 }); // Apply the filter to the query
+    return users;
+  }
+
   async getUserByEmail(email) {
     let user = await User.findOne({ email: email });
     if (user) {
@@ -53,6 +59,13 @@ class UserData {
       obj: result,
       errorMsg: "",
     };
+  }
+
+  async deleteUserById(id) {
+    console.log(`deleting user by id ${id}`);
+    let result = await User.findByIdAndDelete(id);
+    console.log(result);
+    return result;
   }
 }
 

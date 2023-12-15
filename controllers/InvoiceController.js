@@ -17,22 +17,15 @@ exports.Index = async function (request, response) {
     let searchQuery = request.query.search; // Retrieve search query from the request parameters
     let filter = {};
   
-    if (reqInfo.roles.includes("Admin") || reqInfo.roles.includes("Manager")) {
-      // Admins and Managers see all invoices
-      if (searchQuery) {
-        filter["client.name"] = { $regex: searchQuery, $options: "i" };
-      }
-    } else {
-      // Non-admins and non-managers see only their invoices
-      filter["client.email"] = reqInfo.email; // Assuming invoices are associated with email
-      if (searchQuery) {
-        filter["$and"] = [
-          { "client.email": reqInfo.email },
-          { "client.name": { $regex: searchQuery, $options: "i" } }
-        ];
-      }
+    if (!reqInfo.roles.includes("Admin") && !reqInfo.roles.includes("Manager")) {
+      // If the user is not an admin or manager, filter invoices by the user's email
+      filter["client.email"] = reqInfo.email; // Replace "client.email" with the actual field in your invoice schema
+    } else if (searchQuery) {
+      // If there's a search query, create a regex to filter the clients by name
+      filter["client.name"] = { $regex: searchQuery, $options: "i" };
     }
-    console.log(reqInfo); // Add this line to log reqInfo.email
+  
+    console.log(reqInfo)
 
     try {
       let invoices = await _invoiceOps.getAllInvoices(filter); // Pass the filter to your client operations

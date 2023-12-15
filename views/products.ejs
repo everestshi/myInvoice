@@ -5,17 +5,20 @@
     <button type="submit" class="btn btn-Search">Search</button>
   </form>
   <div class="create-btn">
-    <a href="/products/create"><button class="btn btn-Create">New Product</button></a>
+    <% if (reqInfo.roles.includes("Admin")) { %>
+      <a href="/products/create"><button class="btn btn-Create">New Product</button></a>
+    <% } %>
   </div>
 </div>
 <div class="Detail-Delete">
-    <% for (let i = 0; i < products.length; i++ ) { %>
-      <div class="names">
-        <a class="edit-a" href="/products/<%= products[i].id %>"><%= products[i].name %></a> (<%= products[i].code %>)  $<%= (products[i].unitCost / 100).toFixed(2) %> 
-      </div>
-      <div class="btn-class">
-        <!-- <a href="/products/<%= products[i].id %>"><button class="btn btn-Details">Details</button></a>  -->
+  <% for (let i = 0; i < products.length; i++ ) { %>
+    <div class="names">
+      <a class="edit-a" href="/products/<%= products[i].id %>"><%= products[i].name %></a> (<%= products[i].code %>)  $<%= (products[i].unitCost / 100).toFixed(2) %> 
+    </div>
+    <div class="btn-class">
+      <% if (reqInfo.roles.includes("Admin")) { %>
         <a href="/products/<%= products[i].id %>/delete"><button class="btn btn-Delete">Delete</button></a>
-      </div>
-    <% } %>
+      <% } %>
+    </div>
+  <% } %>
 </div>
