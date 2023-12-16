@@ -9,7 +9,8 @@
   </head>
   <body>
     <%- include('../partials/header.ejs') %>
-    <main><%- body %></main>
+    <div class="container">
+    <main id="sidebar-main"><%- body %></main>
     <section class="products-sidebar">
       <% if (products.length) { %>
       <h3>Other Products</h3>
@@ -23,6 +24,7 @@
       </ul>
       <% } %>
     </section>
+    </div>
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

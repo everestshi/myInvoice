@@ -9,6 +9,7 @@ body{
   padding: 0;
   list-style: none;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 img {
@@ -20,6 +21,89 @@ header {
   padding: 1rem;
 }
 
+/* Navbar Styles */
+.navbar {
+  background-color: #403969; /* Dark background color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.navbar__link {
+  color: #fff; /* White text */
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transition for background and text color */
+}
+
+/* Hover Styles */
+.navbar__link:hover {
+  background-color: #58527a; /* Darker background on hover */
+  transition-delay: 0.1s; /* Delay the background color transition */
+  color: #fff; /* Change text color on hover */
+}
+
+/* Apply styles to form container */
+#loginForm {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 22rem; /* Adjust width as needed */
+  margin: 0 auto;
+}
+
+/* Style inputs */
+#loginForm input[type="text"],
+#loginForm input[type="password"],
+#loginForm input[type="submit"] {
+  width: calc(100% - 16px);
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Style submit button */
+#submitButton {
+  background-color: #403969;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#submitButton:hover {
+  background-color: #565992;
+}
+
+/* Apply styles to form container */
+#registerForm {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 26rem; /* Adjust width as needed */
+  margin: 0 auto;
+}
+
+/* Style inputs */
+#registerForm input[type="text"],
+#registerForm input[type="password"],
+#registerForm input[type="submit"] {
+  width: calc(100% - 16px);
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
 main {
   float: left;
   width: 95%;
@@ -29,22 +113,99 @@ main {
 
 footer {
   width: 100%;
-
   font-size: 0.8rem;
   clear: both;
   margin: 1rem;
 }
+
+/* Styles for the profile container */
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for profile details */
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-details p {
+  margin: 5px 0;
+}
+
+/* Styles for the edit button */
+
+.btn-Edit {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-Edit:hover {
+  background-color: #2980b9;
+}
+
+
+/* Styles for the homepage container */
+.homepage-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the welcome text */
+.welcome-text {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.welcome-text h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Styles for the error message */
+.error-message {
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.error-message p {
+  color: #cc0000;
+  font-weight: bold;
+}
+
+
+
+
 
 .profile-pic {
   max-width: 20rem;
 }
 
 .btn {
-  padding: 5px 10px;
-  margin-top:10px;
-  font-size: 20px;
-  color: white;
-  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
   margin-right: 5px;
@@ -56,8 +217,18 @@ footer {
   font-size: 20px;
 }
 
+.container {
+  display: flex;
+}
+
+.sidebar-main {
+  flex: 1; /* Takes up remaining space */
+  margin-right: 20px; /* Adjust the gap between main and sidebar */
+}
+
 .clients-sidebar,
-.products-sidebar {
+.products-sidebar,
+.users-sidebar {
   width: 20%;
   float: right;
   margin-top: 2rem;
@@ -66,82 +237,81 @@ footer {
 }
 
 .clients-sidebar li,
-.products-sidebar li {
+.products-sidebar li,
+.users-sidebar li {
   list-style-type: none;
 }
 
+
+
+/* General styles */
 label {
   display: block;
   width: 100%;
 }
-.searchbar
-{
-  font-size: 30px;
-  font-weight: bold;
+
+.searchbar {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 30px;
   align-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.searchbar .inputfield
-{
-  height:30px;
-  font-size: 20px;
+.searchbar .inputfield {
+  height: 30px;
+  font-size: 16px;
+  padding: 5px;
 }
 
-.search-inputs{
+.search-inputs {
   display: grid;
   align-items: center;
 }
 
 .searchbar .btn {
   grid-column: 2;
-  padding: 10px 10px;
-  margin:5px;
-  font-size: 20px;
-  background-color: #f44336;
+  padding: 8px 12px;
+  font-size: 16px;
   color: white;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  margin-right: 5px; /* Add margin between buttons */
+  margin: 5px;
+}
+/* Add margin between buttons */
+
+.searchbar .btn-Search {
+  background-color: #337ab7;
 }
 
-.searchbar .btn-Search 
-{
-  background-color: blue;
-}
-
-.searchbar .btn-Create
-{
+.searchbar .btn-Create {
   white-space: nowrap;
-  background-color: green;
+  background-color: #5cb85c;
 }
 
-.create-btn{
+.create-btn {
   justify-self: end;
 }
 
-.Detail-Delete .edit-a
-{
-  color: Blue;
-  text-decoration: underline;
-  grid-column: 1;
-}
-
-.Detail-Delete
-{
-  font-size: 20px;
+/* Detail and Delete section */
+.Detail-Delete {
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
+  font-size: 16px;
+  gap: 10px;
+}
+
+.Detail-Delete .edit-a {
+  color: blue;
+  text-decoration: underline;
 }
 
 .Detail-Delete .btn {
   padding: 5px 10px;
-  margin:5px;
-  font-size: 20px;
+  font-size: 14px;
   color: white;
   border-radius: 5px;
   border: none;
@@ -157,35 +327,16 @@ label {
   background-color: #f44336;
 }
 
-.Detail-Delete .edit-a
-{
-  color: Blue;
-  text-decoration: underline;
-  
-}
-
-.Detail-Delete .names
-{
-  grid-column: 1;
-}
-
-.invoice-create .btn-add
-{
+/* Invoice create buttons */
+.invoice-create .btn-add {
   background-color: blue;
 }
 
-.invoice-create .btn-submit
-{
+.invoice-create .btn-submit {
   background-color: green;
 }
 
-.Clients
-{
-  font-size: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-}
+
 
 .Clients .btn {
   padding: 5px 10px;
@@ -222,24 +373,11 @@ label {
   display:flex;
 }
 
-.nav-bar a
-{
-  font-size: 30px;
-  margin-left: 10px;
-  margin-right: 20px;
-  color: black;
-}
-
 .Client
 {
   font-size: 20px;
   font-weight:500;
   line-height: 2;
-}
-
-.btn-Edit
-{
-  background-color: blue;
 }
 
 .btn-Submit
@@ -286,6 +424,14 @@ label {
   font-size: 20px;
   font-weight:500;
 }
+
+
+
+
+
+
+
+
 
 
 #specificInvBody {
