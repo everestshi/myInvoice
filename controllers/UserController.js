@@ -131,8 +131,8 @@ exports.Index = async function (request, response) {
     let filter = {};
   
     if (searchQuery) {
-      // If there's a search query, create a regex to filter the clients by name
-      filter.name = { $regex: searchQuery, $options: 'i' };
+      // If there's a search query, create a regex to filter the users by name
+      filter.username = { $regex: searchQuery, $options: 'i' };
     }
   
     try {
@@ -149,7 +149,7 @@ exports.Index = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -178,7 +178,7 @@ exports.Detail = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -209,7 +209,7 @@ exports.DeleteUserById = async function (request, response) {
     }
   }  else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };

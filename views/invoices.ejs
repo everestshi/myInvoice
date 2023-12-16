@@ -10,11 +10,14 @@
 %>
 
 <h1>Invoices</h1>
+<% if (reqInfo.roles.includes("Admin") || reqInfo.roles.includes("Manager")) { %>
+
 <div class="searchbar">
   <form class="search-inputs" action="/invoices" method="GET">
     <input class="inputfield" type="text" name="search" placeholder="Search by name">
     <button type="submit" class="btn btn-Search">Search</button>
   </form>
+  <% } %>
   <div class="create-btn">
     <% if (reqInfo.roles.includes("Admin") || reqInfo.roles.includes("Manager")) { %>
       <a href="/invoices/create"><button class="btn btn-Create">New Invoice</button></a>
@@ -22,6 +25,9 @@
   </div>
 </div>
 <div class="Invoices">
+  <% if (invoices.length === 0) { %>
+    <p>No invoices available.</p>
+  <% } else { %>
   <% for (let i = 0; i < invoices.length; i++) { %>
     <div class="invoices-wrapper">
       <div class="invoice-details">
@@ -29,7 +35,15 @@
           <span><strong>Invoice #</strong> <%= invoices[i].invoiceNumber %></span>
           <span>- <%= invoices[i].client.name %></span>
           <span>- <%= formatDate(invoices[i].dueDate) %></span>
+          <span>- <%= invoices[i].paid ? 'Paid' : 'Unpaid' %></span>
         </a>
+        <% if (reqInfo.roles.includes("Admin") || reqInfo.roles.includes("Manager")) { %>
+          <a href="/invoices/<%= invoices[i]._id %>/togglePaid">
+            <button class="btn btn-Edit">
+              <%= invoices[i].paid ? 'Mark Unpaid' : 'Mark Paid' %>
+            </button>
+          </a>
+        <% } %>
       </div>
       <div class="btn-class">
         <% if (reqInfo.roles.includes("Admin") || reqInfo.roles.includes("Manager")) { %>
@@ -37,5 +51,6 @@
         <% } %>
       </div>
     </div>
+    <% } %>
   <% } %>
 </div>

@@ -81,7 +81,7 @@ exports.Create = async function (request, response) {
     });
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -124,7 +124,7 @@ exports.CreateProduct = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -154,7 +154,7 @@ exports.DeleteProductById = async function (request, response) {
     }
   }  else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -174,7 +174,7 @@ exports.Edit = async function (request, response) {
     });
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -215,7 +215,7 @@ exports.EditProduct = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };

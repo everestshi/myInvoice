@@ -99,7 +99,7 @@ exports.Create = async function (request, response) {
   });
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be a manager or admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -173,7 +173,7 @@ exports.CreateInvoice = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be a manager or admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -181,7 +181,7 @@ exports.CreateInvoice = async function (request, response) {
 // Handle delete client GET request
 exports.DeleteInvoiceById = async function (request, response) {
   const invoiceId = request.params.id;
-  let reqInfo = RequestService.reqHelper(request, ["Admin"]);
+  let reqInfo = RequestService.reqHelper(request, ["Admin", "Manager"]);
   if (reqInfo.rolePermitted) {
     console.log(`deleting single invoice by id ${invoiceId}`);
     let deletedInvoice = await _invoiceOps.deleteInvoiceById(invoiceId);
@@ -203,8 +203,38 @@ exports.DeleteInvoiceById = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Use"
     );
   }
 };
 
+// Controller function to toggle invoice payment status
+exports.TogglePaidStatus = async function (request, response) {
+  const invoiceId = request.params.id;
+  let reqInfo = RequestService.reqHelper(request, ["Admin", "Manager"]);
+  
+  if (reqInfo.rolePermitted) {
+    console.log(`Toggling paid status for invoice ${invoiceId}`);
+    let updatedInvoice = await _invoiceOps.togglePaidStatusById(invoiceId);
+    let invoices = await _invoiceOps.getAllInvoices();
+  
+    if (updatedInvoice) {
+      response.render("invoices", {
+        title: "Mongo Crud - Invoices",
+        invoices: invoices,
+        reqInfo: reqInfo
+      });
+    } else {
+      response.render("invoices", {
+        title: "Mongo Crud - Invoices",
+        invoices: invoices,
+        errorMessage: "Error. Unable to toggle paid status",
+        reqInfo: reqInfo
+      });
+    }
+  } else {
+    response.redirect(
+      "/?errorMessage=Error: Unauthorized Use"
+    );
+  }
+};

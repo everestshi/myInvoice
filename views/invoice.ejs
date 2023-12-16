@@ -37,7 +37,16 @@
             <p>A1A 1A1</p>
             <p>onwer@exampleco.com</p>
         </section>
-        <p id="invoice-num"><%= invoice.invoiceNumber %></p>
+        <section>
+            <p id="invoice-num">Invoice #: <%= invoice.invoiceNumber %></p>
+            <p id="invoice-paid">
+                <% if (invoice.paid) { %>
+                  Paid
+                <% } else { %>
+                  Unpaid
+                <% } %>
+              </p>
+        </section>
     </div>
     <!-- ... -->
     <main>

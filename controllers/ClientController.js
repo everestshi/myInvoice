@@ -33,7 +33,7 @@ exports.Index = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -62,7 +62,7 @@ exports.Detail = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -80,7 +80,7 @@ exports.Create = async function (request, response) {
     });
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -127,7 +127,7 @@ exports.CreateClient = async function (request, response) {
   }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -158,7 +158,7 @@ exports.DeleteClientById = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -178,7 +178,7 @@ exports.Edit = async function (request, response) {
     });
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };
@@ -219,7 +219,7 @@ exports.EditClient = async function (request, response) {
     }
   } else {
     response.redirect(
-      "/user/login?errorMessage=You must be an admin to access this area."
+      "/?errorMessage=Error: Unauthorized Access"
     );
   }
 };

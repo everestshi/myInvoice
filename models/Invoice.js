@@ -6,7 +6,7 @@ const Product = require("./Product");
 const invoiceSchema = mongoose.Schema({
   client: { type: ClientA.schema }, // Embedding the client document
   invoiceNumber: {
-    type: String,
+    type: Number,
     unique: true,
     required: true,
   },
@@ -25,6 +25,10 @@ const invoiceSchema = mongoose.Schema({
   quantities: [{
     type: Number,
   }],
+  paid: {
+    type: Boolean,
+    default: false, // Setting default value to false
+  },
 },
 {collection: 'invoices'}
 );

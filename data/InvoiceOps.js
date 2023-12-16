@@ -5,12 +5,16 @@ class InvoiceOps {
   InvoiceOps() {}
 
 
-  async getAllInvoices(filter = {}) { // Provide a default value of an empty object for the filter
+  async getAllInvoices(filter = {}) {
     console.log("Getting all invoices with filter:", filter);
-    let invoices = await Invoice.find(filter).collation({ locale: 'en' }).sort({ name: 1 }); // Apply the filter to the query
+    
+    let invoices = await Invoice.find(filter)
+      .collation({ locale: 'en', numericOrdering: true })
+      .sort({ invoiceNumber: 1 });
+  
     return invoices;
   }
-
+  
 
   async getInvoiceById(id) {
     console.log(`getting invoice by id ${id}`);
@@ -51,6 +55,24 @@ class InvoiceOps {
     console.log(result);
     return result;
   }
+
+  async togglePaidStatusById(id) {
+    try {
+      console.log(`Toggling paid status for invoice with id ${id}`);
+      const invoice = await Invoice.findById(id);
+      if (invoice) {
+        invoice.paid = !invoice.paid; // Toggle the 'paid' status
+        const updatedInvoice = await invoice.save();
+        return updatedInvoice;
+      } else {
+        return null; // Invoice not found
+      }
+    } catch (error) {
+      console.error("Error toggling paid status:", error);
+      throw error;
+    }
+  }
+  
 /*
   async updateInvoiceById(id, clientName, clientCode, companyName, email) {
     console.log(`updating invoice by id ${id}`);
