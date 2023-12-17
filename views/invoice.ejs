@@ -1,5 +1,6 @@
 
-<a class="return-link" href="/invoices">Return to Invoices</a>
+<a class="return-link" href="/invoices">Return to All Invoices</a>
+<br>
 <% let totalAmount = 0; %>
 <% invoice.products.forEach(function(product, index) { %>
   <% totalAmount += invoice.quantities[index] * product.unitCost; %>
@@ -22,22 +23,24 @@
 <div id="specificInvBody">
 
     <div id="specificInvHeader">
-        <section id="logo">
-        <img
-            src="/images/unboundLogo.png"
-            alt="logo"
-            width="50px"
-        />
+        <section class="invoice-left-section">
+            <section id="logo">
+                <img
+                    src="/images/unboundLogo.png"
+                    alt="logo"
+                    width="50px"
+                />
+                </section>
+                <section id="user-address">
+                    <p>Example Co.</p>
+                    <p>123 Example Street</p>
+                    <p>Suite 101</p>
+                    <p>DemoVille, BC</p>
+                    <p>A1A 1A1</p>
+                    <p>owner@exampleco.com</p>
+                </section>
         </section>
-        <section id="user-address">
-            <p>Example Co.</p>
-            <p>123 Example Street</p>
-            <p>Suite 101</p>
-            <p>DemoVille, BC</p>
-            <p>A1A 1A1</p>
-            <p>onwer@exampleco.com</p>
-        </section>
-        <section>
+        <section class="invoice-right-section">
             <p id="invoice-num">Invoice #: <%= invoice.invoiceNumber %></p>
             <p id="invoice-paid">
                 <% if (invoice.paid) { %>
@@ -49,7 +52,7 @@
         </section>
     </div>
     <!-- ... -->
-    <main>
+    <div>
         <section class="client-info-and-payment">
             <section class="client-info">
                 <p class="title-style-1">BILL TO:</p>
@@ -100,6 +103,6 @@
             <p id="total-due" class="text-style-3"><%= (totalAmount/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
         </section>
     </section>
-    </main>
+</div>
 
 </div>

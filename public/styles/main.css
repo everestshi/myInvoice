@@ -2,6 +2,10 @@ html,
 body{
   font-family: 'Arial';
   background-color: #F1F1F1;
+  min-width: 800px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 * {
@@ -22,29 +26,37 @@ header {
 }
 
 /* Navbar Styles */
+
 .navbar {
-  background-color: #403969; /* Dark background color */
+  background-color: #403969;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 100px;
 }
 
 .navbar__link {
-  color: #fff; /* White text */
+  color: #fff;
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 5px;
-  transition: background-color 0.2s ease, color 0.2s ease; /* Smooth transition for background and text color */
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Hover Styles */
 .navbar__link:hover {
-  background-color: #58527a; /* Darker background on hover */
-  transition-delay: 0.1s; /* Delay the background color transition */
-  color: #fff; /* Change text color on hover */
+  background-color: #58527a;
+  transition-delay: 0.1s;
+  color: #fff;
 }
+
+/* New Styles for Logo */
+.navbar__logo {
+  width: 5rem;
+  height: auto;
+}
+
 
 /* Apply styles to form container */
 #loginForm {
@@ -109,13 +121,16 @@ main {
   width: 95%;
   padding: 1rem;
   min-height: 10rem;
+  flex: 1; /* Fill remaining vertical space */
 }
 
 footer {
-  width: 100%;
+  width: 800px;
   font-size: 0.8rem;
   clear: both;
-  margin: 1rem;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Styles for the profile container */
@@ -154,6 +169,20 @@ footer {
   background-color: #2980b9;
 }
 
+.btn-Paid {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #dbb434;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-Paid:hover {
+  background-color: #cb8917;
+}
 
 /* Styles for the homepage container */
 .homepage-container {
@@ -219,6 +248,9 @@ footer {
 
 .container {
   display: flex;
+  width: 70%;
+  min-width: 800px;
+  margin: 0 auto;
 }
 
 .sidebar-main {
@@ -284,11 +316,21 @@ label {
 
 .searchbar .btn-Search {
   background-color: #337ab7;
+  transition: background-color 0.3s ease;
+}
+
+.searchbar .btn-Search:hover {
+  background-color: #26538d;
 }
 
 .searchbar .btn-Create {
   white-space: nowrap;
   background-color: #5cb85c;
+  transition: background-color 0.3s ease;
+}
+
+.searchbar .btn-Create:hover {
+  background-color: #3c7d3c;
 }
 
 .create-btn {
@@ -319,42 +361,78 @@ label {
   margin-right: 5px;
 }
 
-.Detail-Delete .btn-Details {
-  background-color: blue;
-}
-
 .Detail-Delete .btn-Delete {
-  background-color: #f44336;
+  background-color: #d94d43;
+  transition: background-color 0.3s ease;
 }
 
-/* Invoice create buttons */
+.Detail-Delete .btn-Delete:hover {
+  background-color: #b6332a;
+}
+
+.invoice-create {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.invoice-create label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+.invoice-create .inputfield,
+.invoice-create input[type="number"],
+.invoice-create select {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 40px;
+}
+
+.invoice-create .btn {
+  padding: 10px 20px;
+  background-color: #403969;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
 .invoice-create .btn-add {
-  background-color: blue;
+  background-color: #5cb85c;
+  transition: background-color 0.3s ease;
 }
 
 .invoice-create .btn-submit {
-  background-color: green;
+  background-color: #403969;
+  transition: background-color 0.3s ease;
 }
 
-
-
-.Clients .btn {
-  padding: 5px 10px;
-  margin:5px;
-  font-size: 20px;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  margin-right: 5px;
+.invoice-create .btn-add:hover {
+  background-color: #3c7d3c;
 }
+
+.invoice-create .btn-submit:hover {
+  background-color: #565992;
+}
+
+/* Clients Section */
 
 .btn-class{
   justify-self: end;
-}
-
-.Clients .btn-Details {
-  background-color: blue;
 }
 
 .Clients .btn-Delete {
@@ -373,70 +451,305 @@ label {
   display:flex;
 }
 
-.Client
-{
-  font-size: 20px;
-  font-weight:500;
-  line-height: 2;
+.Client {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-.btn-Submit
-{
-  background-color: green;
+.Client h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.client-edit label
-{
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight:500;
+.Client p {
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-.product-create label
-{
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight:500;
+.client-edit {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.client-edit h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.client-edit label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.client-edit .inputfield {
+  width: calc(100% - 16px);
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+
+.client-edit .btn-Submit {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: #403969;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.client-edit .btn-Submit:hover {
+  background-color: #58527a;
+}
+
+
+.product-create {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-create label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.product-create .inputfield {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.product-create .btn {
+  padding: 10px 20px;
+  background-color: #403969;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.product-create .btn:hover {
+  background-color: #58527a;
+}
+
 
 .unit-code
 {
   font-size: 15px;
 }
 
-.Product
-{
-  font-size: 20px;
-  font-weight:500;
-  line-height: 2;
+.Product {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-.product-edit label
-{
+.Product h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.Product p {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.product-edit {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-edit h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.product-edit label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.product-edit .inputfield {
+  width: calc(100% - 16px);
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+
+.product-edit .btn-Submit {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: #403969;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.product-edit .btn-Submit:hover {
+  background-color: #58527a;
+}
+
+
+.client-create {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.client-create label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.client-create .inputfield {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.client-create .btn {
+  padding: 10px 20px;
+  background-color: #403969;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.client-create .btn:hover {
+  background-color: #58527a;
+}
+
+
+
+
+.User {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.User h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.User p {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.user-edit-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-edit-form table {
+  width: 100%;
+}
+
+.user-edit-form table tr {
+  margin-bottom: 15px;
+}
+
+.user-edit-form table td {
+  padding: 8px 0;
+}
+
+.user-edit-form input[type="text"],
+.user-edit-form input[type="submit"],
+.user-edit-form select {
+  width: calc(100% - 5px);
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.user-edit-form select {
+  height: 36px;
+}
+
+.user-edit-form input[type="submit"] {
+  display: block;
   margin-top: 10px;
-  font-size: 20px;
-  font-weight:500;
+  cursor: pointer;
+  background-color: #403969;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.client-create label
-{
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight:500;
+.user-edit-form input[type="submit"]:hover {
+  background-color: #58527a;
 }
-
-
-
-
-
-
-
-
 
 
 #specificInvBody {
     width: 700px;
-    height: 100vh;
     margin: auto;
     line-height: 1.2rem;
     display: flex;
@@ -450,6 +763,7 @@ label {
     margin: 0 auto;
     vertical-align: top;
     display: flex;
+    justify-content: space-between;
 }
 
 #specificInvHeader p {
@@ -460,7 +774,11 @@ label {
     width: 150px
 }
 
-#invoice-num {
+.invoice-left-section {
+  display: flex;
+}
+
+.invoice-right-section {
     text-align: right;
 }
 
