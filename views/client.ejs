@@ -1,12 +1,16 @@
+<a class="return-link" href="/clients">Return to All Clients</a>
+<br>
+
 <% for (let i = 0; i < clients.length; i++) { %> <% if(clients[i].id === 
   clientId) { %>
     <h1><%= clients[i].name %></h1>
     <div class="Client">
-      <p>Client ID: <%= clients[i].id %></p>
-      <p>Client Code: <%= clients[i].code %></p>
-      <p>Company Name: <%= clients[i].companyName %></p>
-      <p>Client Email: <%= clients[i].email %></p>
+      <p><strong>Client ID</strong>: <%= clients[i].id %></p>
+      <p><strong>Client Code</strong>: <%= clients[i].code %></p>
+      <p><strong>Company Name</strong>: <%= clients[i].companyName %></p>
+      <p><strong>Client Email</strong>: <%= clients[i].email %></p>
     </div>
+    <br>
       <a href="/clients/edit/<%= clientId %>"><button class="btn btn-Edit">Edit</button></a>
   <% } %>
 <% } %>

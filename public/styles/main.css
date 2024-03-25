@@ -2,6 +2,10 @@ html,
 body{
   font-family: 'Arial';
   background-color: #F1F1F1;
+  min-width: 800px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 * {
@@ -9,6 +13,7 @@ body{
   padding: 0;
   list-style: none;
   text-decoration: none;
+  box-sizing: border-box;
 }
 
 img {
@@ -20,31 +25,216 @@ header {
   padding: 1rem;
 }
 
+/* Navbar Styles */
+
+.navbar {
+  background-color: #403969;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  height: 100px;
+}
+
+.navbar__link {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.navbar__link:hover {
+  background-color: #58527a;
+  transition-delay: 0.1s;
+  color: #fff;
+}
+
+/* New Styles for Logo */
+.navbar__logo {
+  width: 5rem;
+  height: auto;
+}
+
+
+/* Apply styles to form container */
+#loginForm {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 22rem; /* Adjust width as needed */
+  margin: 0 auto;
+}
+
+/* Style inputs */
+#loginForm input[type="text"],
+#loginForm input[type="password"],
+#loginForm input[type="submit"] {
+  width: calc(100% - 16px);
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+/* Style submit button */
+#submitButton {
+  background-color: #403969;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#submitButton:hover {
+  background-color: #565992;
+}
+
+/* Apply styles to form container */
+#registerForm {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 26rem; /* Adjust width as needed */
+  margin: 0 auto;
+}
+
+/* Style inputs */
+#registerForm input[type="text"],
+#registerForm input[type="password"],
+#registerForm input[type="submit"] {
+  width: calc(100% - 16px);
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
 main {
   float: left;
   width: 95%;
   padding: 1rem;
   min-height: 10rem;
+  flex: 1; /* Fill remaining vertical space */
 }
 
 footer {
-  width: 100%;
-
+  width: 800px;
   font-size: 0.8rem;
   clear: both;
-  margin: 1rem;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+/* Styles for the profile container */
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for profile details */
+.profile-details {
+  margin-bottom: 20px;
+}
+
+.profile-details p {
+  margin: 5px 0;
+}
+
+/* Styles for the edit button */
+
+.btn-Edit {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-Edit:hover {
+  background-color: #2980b9;
+}
+
+.btn-Paid {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #dbb434;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-Paid:hover {
+  background-color: #cb8917;
+}
+
+/* Styles for the homepage container */
+.homepage-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the welcome text */
+.welcome-text {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.welcome-text h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.welcome-text p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Styles for the error message */
+.error-message {
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.error-message p {
+  color: #cc0000;
+  font-weight: bold;
+}
+
+
+
+
 
 .profile-pic {
   max-width: 20rem;
 }
 
 .btn {
-  padding: 5px 10px;
-  margin-top:10px;
-  font-size: 20px;
-  color: white;
-  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
   border: none;
   cursor: pointer;
   margin-right: 5px;
@@ -56,8 +246,21 @@ footer {
   font-size: 20px;
 }
 
+.container {
+  display: flex;
+  width: 70%;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+.sidebar-main {
+  flex: 1; /* Takes up remaining space */
+  margin-right: 20px; /* Adjust the gap between main and sidebar */
+}
+
 .clients-sidebar,
-.products-sidebar {
+.products-sidebar,
+.users-sidebar {
   width: 20%;
   float: right;
   margin-top: 2rem;
@@ -66,144 +269,170 @@ footer {
 }
 
 .clients-sidebar li,
-.products-sidebar li {
+.products-sidebar li,
+.users-sidebar li {
   list-style-type: none;
 }
 
+
+
+/* General styles */
 label {
   display: block;
   width: 100%;
 }
-.searchbar
-{
-  font-size: 30px;
-  font-weight: bold;
+
+.searchbar {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 30px;
   align-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.searchbar .inputfield
-{
-  height:30px;
-  font-size: 20px;
+.searchbar .inputfield {
+  height: 30px;
+  font-size: 16px;
+  padding: 5px;
 }
 
-.search-inputs{
+.search-inputs {
   display: grid;
   align-items: center;
 }
 
 .searchbar .btn {
   grid-column: 2;
-  padding: 10px 10px;
-  margin:5px;
-  font-size: 20px;
-  background-color: #f44336;
+  padding: 8px 12px;
+  font-size: 16px;
   color: white;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  margin-right: 5px; /* Add margin between buttons */
+  margin: 5px;
+}
+/* Add margin between buttons */
+
+.searchbar .btn-Search {
+  background-color: #337ab7;
+  transition: background-color 0.3s ease;
 }
 
-.searchbar .btn-Search 
-{
-  background-color: blue;
+.searchbar .btn-Search:hover {
+  background-color: #26538d;
 }
 
-.searchbar .btn-Create
-{
+.searchbar .btn-Create {
   white-space: nowrap;
-  background-color: green;
+  background-color: #5cb85c;
+  transition: background-color 0.3s ease;
 }
 
-.create-btn{
+.searchbar .btn-Create:hover {
+  background-color: #3c7d3c;
+}
+
+.create-btn {
   justify-self: end;
 }
 
-.Detail-Delete .edit-a
-{
-  color: Blue;
-  text-decoration: underline;
-  grid-column: 1;
-}
-
-.Detail-Delete
-{
-  font-size: 20px;
+/* Detail and Delete section */
+.Detail-Delete {
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr auto;
+  font-size: 16px;
+  gap: 10px;
+}
+
+.Detail-Delete .edit-a {
+  color: blue;
+  text-decoration: underline;
 }
 
 .Detail-Delete .btn {
   padding: 5px 10px;
-  margin:5px;
-  font-size: 20px;
+  font-size: 14px;
   color: white;
   border-radius: 5px;
   border: none;
   cursor: pointer;
   margin-right: 5px;
-}
-
-.Detail-Delete .btn-Details {
-  background-color: blue;
 }
 
 .Detail-Delete .btn-Delete {
-  background-color: #f44336;
+  background-color: #d94d43;
+  transition: background-color 0.3s ease;
 }
 
-.Detail-Delete .edit-a
-{
-  color: Blue;
-  text-decoration: underline;
-  
+.Detail-Delete .btn-Delete:hover {
+  background-color: #b6332a;
 }
 
-.Detail-Delete .names
-{
-  grid-column: 1;
-}
-
-.invoice-create .btn-add
-{
-  background-color: blue;
-}
-
-.invoice-create .btn-submit
-{
-  background-color: green;
-}
-
-.Clients
-{
-  font-size: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-}
-
-.Clients .btn {
-  padding: 5px 10px;
-  margin:5px;
-  font-size: 20px;
-  color: white;
+.invoice-create {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  margin-right: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+.invoice-create label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+.invoice-create .inputfield,
+.invoice-create input[type="number"],
+.invoice-create select {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  height: 40px;
+}
+
+.invoice-create .btn {
+  padding: 10px 20px;
+  background-color: #403969;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.invoice-create .btn-add {
+  background-color: #5cb85c;
+  transition: background-color 0.3s ease;
+}
+
+.invoice-create .btn-submit {
+  background-color: #403969;
+  transition: background-color 0.3s ease;
+}
+
+.invoice-create .btn-add:hover {
+  background-color: #3c7d3c;
+}
+
+.invoice-create .btn-submit:hover {
+  background-color: #565992;
+}
+
+/* Clients Section */
 
 .btn-class{
   justify-self: end;
-}
-
-.Clients .btn-Details {
-  background-color: blue;
 }
 
 .Clients .btn-Delete {
@@ -222,75 +451,305 @@ label {
   display:flex;
 }
 
-.nav-bar a
-{
-  font-size: 30px;
-  margin-left: 10px;
-  margin-right: 20px;
-  color: black;
+.Client {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-.Client
-{
-  font-size: 20px;
-  font-weight:500;
-  line-height: 2;
+.Client h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.btn-Edit
-{
-  background-color: blue;
+.Client p {
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-.btn-Submit
-{
-  background-color: green;
+.client-edit {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.client-edit label
-{
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight:500;
+.client-edit h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.product-create label
-{
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight:500;
+.client-edit label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
 }
+
+.client-edit .inputfield {
+  width: calc(100% - 16px);
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+
+.client-edit .btn-Submit {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: #403969;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.client-edit .btn-Submit:hover {
+  background-color: #58527a;
+}
+
+
+.product-create {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-create label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.product-create .inputfield {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.product-create .btn {
+  padding: 10px 20px;
+  background-color: #403969;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.product-create .btn:hover {
+  background-color: #58527a;
+}
+
 
 .unit-code
 {
   font-size: 15px;
 }
 
-.Product
-{
-  font-size: 20px;
-  font-weight:500;
-  line-height: 2;
+.Product {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
-.product-edit label
-{
-  margin-top: 10px;
-  font-size: 20px;
-  font-weight:500;
+.Product h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.client-create label
-{
+.Product p {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.product-edit {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-edit h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.product-edit label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.product-edit .inputfield {
+  width: calc(100% - 16px);
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 16px;
+}
+
+.product-edit .btn-Submit {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background-color: #403969;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.product-edit .btn-Submit:hover {
+  background-color: #58527a;
+}
+
+
+.client-create {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.client-create label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.client-create .inputfield {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.client-create .btn {
+  padding: 10px 20px;
+  background-color: #403969;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.client-create .btn:hover {
+  background-color: #58527a;
+}
+
+
+
+
+.User {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.User h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.User p {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.user-edit-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-edit-form table {
+  width: 100%;
+}
+
+.user-edit-form table tr {
+  margin-bottom: 15px;
+}
+
+.user-edit-form table td {
+  padding: 8px 0;
+}
+
+.user-edit-form input[type="text"],
+.user-edit-form input[type="submit"],
+.user-edit-form select {
+  width: calc(100% - 5px);
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.user-edit-form select {
+  height: 36px;
+}
+
+.user-edit-form input[type="submit"] {
+  display: block;
   margin-top: 10px;
-  font-size: 20px;
-  font-weight:500;
+  cursor: pointer;
+  background-color: #403969;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.user-edit-form input[type="submit"]:hover {
+  background-color: #58527a;
 }
 
 
 #specificInvBody {
     width: 700px;
-    height: 100vh;
     margin: auto;
     line-height: 1.2rem;
     display: flex;
@@ -304,6 +763,7 @@ label {
     margin: 0 auto;
     vertical-align: top;
     display: flex;
+    justify-content: space-between;
 }
 
 #specificInvHeader p {
@@ -314,7 +774,11 @@ label {
     width: 150px
 }
 
-#invoice-num {
+.invoice-left-section {
+  display: flex;
+}
+
+.invoice-right-section {
     text-align: right;
 }
 

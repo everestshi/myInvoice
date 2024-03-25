@@ -30,4 +30,7 @@ invoicesRouter.get("/:id", InvoiceController.Detail);
 // Delete an Individual Client
 invoicesRouter.get("/:id/delete", InvoiceController.DeleteInvoiceById);
 
+invoicesRouter.get("/:id/togglePaid", InvoiceController.TogglePaidStatus);
+
+
 module.exports = invoicesRouter;

@@ -6,6 +6,9 @@ const logger = require("morgan");
 const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
+
 require("dotenv").config();
 
 // Database setup
@@ -42,10 +45,30 @@ app.use(logger("dev"));
 // allow cross origin requests from this machine
 app.use(cors({ origin: [/127.0.0.1*/, /localhost*/] }));
 
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
+
+app.use(
+  require("express-session")({
+    secret: "a long time ago in a galaxy far far away",
+    resave: false,
+    saveUninitialized: false,
+  })
+)
+
+// Set up User Auth via Passport
+// Initialize passport and configure for User model
+app.use(passport.initialize());
+app.use(passport.session());
+const User = require("./models/User");
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // use express.static middleware to make the public folder accessible
 app.use(express.static("public"));
@@ -73,6 +96,13 @@ app.use("/products", productsRouter);
 
 // invoices routes
 app.use("/invoices", invoicesRouter);
+
+const userRouter = require("./routers/userRouter");
+app.use("/user", userRouter);
+
+// Secure routes
+const secureRouter = require("./routers/secureRouter");
+app.use("/secure", secureRouter);
 
 // api routes
 app.use("/api", apiRouter);

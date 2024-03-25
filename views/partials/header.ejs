@@ -1,8 +1,31 @@
 <header>
-  <nav class="nav-bar">
-    <a href="/">Home</a> 
-    <a href="/clients">Clients</a> 
-    <a href="/products">Products</a> 
-    <a href="/invoices">Invoices</a>
+  <nav class="navbar">
+    <div class="navbar__left">
+      <% if (reqInfo.authenticated) { %>
+        <a href="/" class="navbar__link">Home</a>
+        <a href="/user/profile" class="navbar__link">My Profile</a>
+      <% } %>
+    </div>
+    <div class="navbar__logo">
+      <a href="/">
+        <img src="/images/unboundLogo-White.png" alt="Your Logo" class="logo-image">
+      </a>
+    </div>
+    <div class="navbar__right">
+      <% if (reqInfo.authenticated) { %>
+        <% if (reqInfo.roles.includes("Admin") || reqInfo.roles.includes("Manager")) { %>
+          <a href="/user/users" class="navbar__link">Users</a>
+        <% } %>
+        <% if (reqInfo.roles.includes("Admin")) { %>
+          <a href="/clients" class="navbar__link">Clients</a>
+        <% } %>
+        <a href="/products" class="navbar__link">Products</a>
+        <a href="/invoices" class="navbar__link">Invoices</a>
+        <a href="/user/logout" class="navbar__link">Logout</a>
+      <% } else { %>
+        <a href="/user/register" class="navbar__link">Register</a>
+        <a href="/user/login" class="navbar__link">Login</a>
+      <% } %>
+    </div>
   </nav>
 </header>

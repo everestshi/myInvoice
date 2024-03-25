@@ -1,5 +1,6 @@
 
-<a class="return-link" href="/invoices">Return to Invoices</a>
+<a class="return-link" href="/invoices">Return to All Invoices</a>
+<br>
 <% let totalAmount = 0; %>
 <% invoice.products.forEach(function(product, index) { %>
   <% totalAmount += invoice.quantities[index] * product.unitCost; %>
@@ -22,25 +23,36 @@
 <div id="specificInvBody">
 
     <div id="specificInvHeader">
-        <section id="logo">
-        <img
-            src="/images/backward.png"
-            alt="logo"
-            width="50px"
-        />
+        <section class="invoice-left-section">
+            <section id="logo">
+                <img
+                    src="/images/unboundLogo.png"
+                    alt="logo"
+                    width="50px"
+                />
+                </section>
+                <section id="user-address">
+                    <p>Example Co.</p>
+                    <p>123 Example Street</p>
+                    <p>Suite 101</p>
+                    <p>DemoVille, BC</p>
+                    <p>A1A 1A1</p>
+                    <p>owner@exampleco.com</p>
+                </section>
         </section>
-        <section id="user-address">
-            <p>Example Co.</p>
-            <p>123 Example Street</p>
-            <p>Suite 101</p>
-            <p>DemoVille, BC</p>
-            <p>A1A 1A1</p>
-            <p>onwer@exampleco.com</p>
+        <section class="invoice-right-section">
+            <p id="invoice-num">Invoice #: <%= invoice.invoiceNumber %></p>
+            <p id="invoice-paid">
+                <% if (invoice.paid) { %>
+                  Paid
+                <% } else { %>
+                  Unpaid
+                <% } %>
+              </p>
         </section>
-        <p id="invoice-num"><%= invoice.invoiceNumber %></p>
     </div>
     <!-- ... -->
-    <main>
+    <div>
         <section class="client-info-and-payment">
             <section class="client-info">
                 <p class="title-style-1">BILL TO:</p>
@@ -55,7 +67,7 @@
                 </article>
                 <article>
                     <p class="title-style-2">PLEASE PAY</p>
-                    <p><%= totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
+                    <p><%= (totalAmount/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
                   </article>              
                 <article>
                     <p class="title-style-2">DUE DATE</p>
@@ -75,8 +87,8 @@
             <tr>
                 <td><%= product.name %></td> 
                 <td class="text-style-2"><%= invoice.quantities[index] %></td>
-                <td class="text-style-2"><%= product.unitCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
-                <td class="text-style-3"><%= (invoice.quantities[index] * product.unitCost).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                <td class="text-style-2"><%= (product.unitCost/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
+                <td class="text-style-3"><%= (invoice.quantities[index] * product.unitCost/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></td>
             </tr>
         <% }) %>
     </table>
@@ -88,9 +100,9 @@
         </section>
         <section class="total-section">
             <p class="title-style-3">TOTAL DUE</p>
-            <p id="total-due" class="text-style-3"><%= totalAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
+            <p id="total-due" class="text-style-3"><%= (totalAmount/100).toLocaleString('en-US', { style: 'currency', currency: 'USD' }) %></p>
         </section>
     </section>
-    </main>
+</div>
 
 </div>

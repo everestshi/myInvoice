@@ -1,0 +1,62 @@
+<h1><%= user._id ? "Edit" : "New" %> User</h1>
+
+<form action="/user/edit/<%= user._id %>" class="profile-edit" method="POST">
+  <table class="user-edit-form">
+    <tbody>
+      <tr>
+        <td>Email:</td>
+        <td>
+          <input
+            class="inputfield"
+            name="email"
+            type="text"
+            value="<%= user.email ? user.email : '' %>"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>First Name:</td>
+        <td>
+          <input
+            class="inputfield"
+            name="firstName"
+            type="text"
+            value="<%= user.firstName ? user.firstName : '' %>"
+          />
+        </td>
+      </tr>
+      <tr>
+        <td>Last Name:</td>
+        <td>
+          <input
+            class="inputfield"
+            name="lastName"
+            type="text"
+            value="<%= user.lastName ? user.lastName : '' %>"
+          />
+        </td>
+      </tr>
+      <% if (reqInfo.roles.includes("Admin")) { %>
+        <tr>
+          <td>User Roles:</td>
+          <td>
+            <select class="inputfield" name="userRoles">
+              <option value="" <% if (!user.roles || user.roles.length === 0) { %>selected<% } %>>Empty</option>
+              <option value="Manager" <% if (user.roles.includes("Manager")) { %>selected<% } %>>Manager</option>
+              <option value="Admin" <% if (user.roles.includes("Admin")) { %>selected<% } %>>Admin</option>
+            </select>
+          </td>
+        </tr>
+      <% } %>
+      <% if (returnUrl) { %>
+        <!-- Hidden input field to store the returnUrl -->
+        <input type="hidden" name="returnUrl" value="<%= returnUrl %>">
+      <% } %>
+      <tr>
+        <td></td>
+        <td><input class="btn btn-Submit" type="submit" value="Submit" /></td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+<%= errorMessage %>

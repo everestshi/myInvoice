@@ -1,0 +1,19 @@
+<a class="return-link" href="/user/users">Return to All Users</a>
+<br>
+
+<% for (let i = 0; i < users.length; i++) { %>
+    <% if (users[i].id === userId) { %>
+      <h1><%= users[i].username %></h1>
+      <div class="User">
+        <p><strong>First Name</strong>: <%= users[i].firstName %></p>
+        <p><strong>Last Name</strong>: <%= users[i].lastName %></p>
+        <p><strong>Email</strong>: <%= users[i].email %></p>
+        <p><% if(users[i].roles?.length) { %> <strong>Roles</strong>: <%= users[i].roles %> <% } %></p>
+      </div>
+      <br>
+      <% if (reqInfo.roles.includes("Admin") || reqInfo.roles.includes("Manager")) { %>
+        <a href="/user/edit/<%= userId %>?returnUrl=/user/users/<%= userId %>"><button class="btn btn-Edit">Edit</button></a>
+        <% } %>
+    <% } %>
+  <% } %>
+  
